@@ -1,0 +1,42 @@
+<div align="center">
+  <h1>LISTA DE USUARIOS REGISTRADOS</h1>
+    <table border="1" *ngIf="hayRegistros(); else sin">
+      <tr>
+        <td>ID</td>
+        <td>USUARIO</td>
+        <td>PASSWORD</td>
+        <td>NOMBRE</td>
+        <td>ACCIÓN</td>
+        <td>ESTADO</td>
+        <td>BORRAR</td>
+        <td>SELECCIONAR</td>
+      </tr>
+      <tr *ngFor="let usuario of usuarios">
+        <td> {{usuario.idUsuario}} </td>
+        <td> {{usuario.usuario}} </td>
+        <td> {{usuario.password}} </td>
+        <td> {{usuario.nombre }} </td>
+        <td> {{usuario.accion }} </td>
+        <td> {{usuario.estado }} </td>
+        <td> <button (click)="bajaUsuario(usuario.idUsuario)"> Borrar </button> </td>
+        <td> <button (click)="seleccionarUsuario(usuario.idUsuario)"> Seleccionar </button> </td>
+      </tr>
+    </table>
+
+<ng-template #sin>
+  <p>No hay usuarios registrados.</p>
+</ng-template>
+
+<div>
+  <p> Usuario: <input type="text" [(ngModel)]="usuario.usuario" /> </p>
+  <p> Password: <input type="text" [(ngModel)]="usuario.password" /> </p>
+  <p> Nombre: <input type="text" [(ngModel)]="usuario.nombre" /> </p>
+  <p> Acción: <input type="text" [(ngModel)]="usuario.accion" /> </p>
+  <p> Estado: <input type="text" [(ngModel)]="usuario.estado" /> </p>
+  <p> 
+    <button (click)="altaUsuario()"> AGREGAR </button>
+    <button (click)="editarUsuario()"> MODIFICAR </button>
+  </p>
+</div>
+
+</div>
